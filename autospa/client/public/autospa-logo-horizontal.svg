@@ -1,0 +1,17 @@
+<svg width="230" height="52" viewBox="0 0 230 52" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AutoSpa — car care, on demand">
+  <!-- icon -->
+  <rect x="2" y="2" width="48" height="48" rx="12" fill="#0F8A6D"/>
+  <path d="M25 11 L26.3 14.7 L30 16 L26.3 17.3 L25 21 L23.7 17.3 L20 16 L23.7 14.7 Z" fill="#8FE8CE"/>
+  <path d="M13 33 C13 33 14.6 27.4 17.2 25.6 C18.4 24.8 20.2 24.4 22 24.4 L30 24.4 C31.8 24.4 33.6 24.8 34.8 25.6 C37.4 27.4 39 33 39 33"
+        stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13 33 L39 33" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="19.5" cy="33.5" r="3" fill="#0F8A6D" stroke="#FFFFFF" stroke-width="2.2"/>
+  <circle cx="32.5" cy="33.5" r="3" fill="#0F8A6D" stroke="#FFFFFF" stroke-width="2.2"/>
+
+  <!-- wordmark -->
+  <text x="64" y="30" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="23" font-weight="600" letter-spacing="-0.4">
+    <tspan fill="#14201C">Auto</tspan><tspan fill="#0F8A6D">Spa</tspan>
+  </text>
+  <!-- tagline -->
+  <text x="65" y="43" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="9" font-weight="500" letter-spacing="2.4" fill="#93A099">CAR CARE, ON DEMAND</text>
+</svg>

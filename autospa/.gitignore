@@ -1,0 +1,12 @@
+node_modules
+.env
+
+/server/src/logs/*
+/server/src/uploads/*
+
+# Keep the (otherwise-ignored) folders tracked in git
+!/server/src/logs/.gitkeep
+!/server/src/uploads/.gitkeep
+
+# Build output
+dist

@@ -1,0 +1,47 @@
+# Local, disposable dev infrastructure for AutoSpa.
+# Throwaway dummy data only — no real/cloud credentials needed.
+#   npm run db:up    -> start MongoDB + Redis in the background
+#   npm run db:down  -> stop and remove the containers (data volume kept)
+#
+# Mongo runs as a SINGLE-NODE REPLICA SET (rs0) because multi-document
+# transactions — used by the concurrency-safe booking endpoint — require one.
+# The replica set auto-initiates on the first healthcheck.
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: autospa-mongo
+    restart: unless-stopped
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - autospa-mongo-data:/data/db
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--eval",
+          "try { rs.status().ok } catch (e) { rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'localhost:27017' }] }).ok }",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  redis:
+    image: redis:7
+    container_name: autospa-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  autospa-mongo-data:

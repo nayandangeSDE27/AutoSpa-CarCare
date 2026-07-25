@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AutoSpa">
+  <rect width="48" height="48" rx="12" fill="#0F8A6D"/>
+  <!-- sparkle / shine -->
+  <path d="M23 9 L24.3 12.7 L28 14 L24.3 15.3 L23 19 L21.7 15.3 L18 14 L21.7 12.7 Z" fill="#8FE8CE"/>
+  <!-- car body -->
+  <path d="M11 31 C11 31 12.6 25.4 15.2 23.6 C16.4 22.8 18.2 22.4 20 22.4 L28 22.4 C29.8 22.4 31.6 22.8 32.8 23.6 C35.4 25.4 37 31 37 31"
+        stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- underline / ground -->
+  <path d="M11 31 L37 31" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- wheels -->
+  <circle cx="17.5" cy="31.5" r="3" fill="#0F8A6D" stroke="#FFFFFF" stroke-width="2.2"/>
+  <circle cx="30.5" cy="31.5" r="3" fill="#0F8A6D" stroke="#FFFFFF" stroke-width="2.2"/>
+</svg>

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * LOCKED premium-teal palette (CLAUDE.md section 15). Everything is a CSS
+ * variable so a dark palette can be layered in later (sub-phase 7g) by
+ * overriding these under a `.dark` / [data-theme="dark"] scope — WITHOUT
+ * touching any component.
+ */
+:root {
+  /* Brand */
+  --primary: #0f8a6d;
+  --primary-hover: #0b6b54;
+  --primary-deep: #06231c; /* deep text on teal tints */
+
+  /* Accent tints */
+  --accent-light: #e5f4ef;
+  --accent-mid: #8fe8ce;
+  --accent-header: #bdeedf;
+
+  /* Surfaces */
+  --bg: #f7faf9;
+  --surface: #ffffff;
+
+  /* Text */
+  --text-primary: #14201c;
+  --text-secondary: #5c6b66;
+  --text-muted: #93a099;
+
+  /* Borders */
+  --border-hairline: #e4ebe8;
+  --border-control: #dce5e1;
+  --border-strong: #d4deda;
+
+  /* Feedback */
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --success: #0f8a6d;
+
+  /* On-brand foreground (text/icon on solid teal) */
+  --on-primary: #ffffff;
+
+  /* Radii */
+  --radius-card: 13px;
+  --radius-control: 8px;
+
+  /* Elevation */
+  --shadow-soft: 0 4px 20px rgba(20, 32, 28, 0.04);
+  --shadow-card: 0 4px 20px rgba(20, 32, 28, 0.04);
+  --shadow-pop: 0 12px 32px rgba(20, 32, 28, 0.12);
+
+  /* Focus ring */
+  --ring: rgba(15, 138, 109, 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-hairline);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Accessibility: honor reduced-motion by neutralizing animations/transitions. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  /* Tight negative tracking on large headings. */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+  /* Tabular figures for codes / numbers where needed. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
