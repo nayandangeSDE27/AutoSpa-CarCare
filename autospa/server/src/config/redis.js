@@ -15,10 +15,22 @@ if (config.env === 'test') {
   RedisImpl = (await import('ioredis')).default
 }
 
+let redisUrl = config.redisUrl || ''
+// Upstash requires TLS. If the URL points to Upstash but uses unprotected 'redis://', fix it.
+if (redisUrl.includes('upstash.io') && redisUrl.startsWith('redis://')) {
+  redisUrl = redisUrl.replace('redis://', 'rediss://')
+}
+
+const redisOptions = {
+  lazyConnect: false,
+  maxRetriesPerRequest: 3,
+  family: 0, // Render-specific fix: Allow IPv4/IPv6 dual-stack resolution
+}
+
 const redis =
   config.env === 'test'
     ? new RedisImpl()
-    : new RedisImpl(config.redisUrl, { lazyConnect: false, maxRetriesPerRequest: 3 })
+    : new RedisImpl(redisUrl, redisOptions)
 
 if (config.env !== 'test') {
   redis.on('connect', () => logger.info('Redis connected'))
