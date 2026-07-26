@@ -25,6 +25,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({ origin: config.clientUrl, credentials: true }))
 
+app.set('trust proxy', 1)
+
 // --- Rate limiting (mounted on the API surface) ---
 app.use('/api', rateLimiter)
 
