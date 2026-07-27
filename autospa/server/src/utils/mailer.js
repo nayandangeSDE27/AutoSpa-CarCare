@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-
+import dns from 'node:dns'
 import config from '../config/index.js'
 import logger from './logger.js'
 
@@ -14,6 +14,10 @@ const testSink = []
 function getTransport() {
   if (transport) return transport
   if (config.smtp.enabled) {
+    dns.lookup(config.smtp.host, { all: true }, (err, addresses) => {
+      logger.info({ addresses, err }, 'SMTP DNS Lookup')
+    })
+
     transport = nodemailer.createTransport({
       host: config.smtp.host,
       port: config.smtp.port,
