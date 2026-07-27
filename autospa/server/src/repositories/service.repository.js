@@ -32,7 +32,7 @@ function findById(id) {
 }
 
 function updateById(id, update) {
-  return Service.findByIdAndUpdate(id, update, { new: true, runValidators: true })
+  return Service.findByIdAndUpdate(id, update, { returnDocument: 'after', runValidators: true })
 }
 
 function deleteById(id) {

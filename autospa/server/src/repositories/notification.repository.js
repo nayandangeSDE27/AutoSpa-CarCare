@@ -24,7 +24,7 @@ function findById(id) {
 }
 
 function markRead(id) {
-  return Notification.findByIdAndUpdate(id, { isRead: true }, { new: true })
+  return Notification.findByIdAndUpdate(id, { isRead: true }, { returnDocument: 'after' })
 }
 
 function markAllRead(userId) {

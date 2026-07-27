@@ -9,13 +9,13 @@ function getOrCreate() {
   return Settings.findOneAndUpdate(
     { key: 'global' },
     { $setOnInsert: { key: 'global', commissionRate: 0.1 } },
-    { new: true, upsert: true, setDefaultsOnInsert: true }
+    { returnDocument: 'after', upsert: true, setDefaultsOnInsert: true }
   )
 }
 
 function update(patch) {
   return Settings.findOneAndUpdate({ key: 'global' }, patch, {
-    new: true,
+    returnDocument: 'after',
     upsert: true,
     runValidators: true,
     setDefaultsOnInsert: true,

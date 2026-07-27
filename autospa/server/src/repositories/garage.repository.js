@@ -63,14 +63,14 @@ async function countByVerificationStatus() {
 }
 
 function updateById(id, update) {
-  return Garage.findByIdAndUpdate(id, update, { new: true, runValidators: true })
+  return Garage.findByIdAndUpdate(id, update, { returnDocument: 'after', runValidators: true })
 }
 
 function pushGallery(id, urls) {
   return Garage.findByIdAndUpdate(
     id,
     { $push: { images: { $each: urls } } },
-    { new: true }
+    { returnDocument: 'after' }
   )
 }
 

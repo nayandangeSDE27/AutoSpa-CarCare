@@ -25,7 +25,7 @@ function findByEmailWithPassword(email) {
 }
 
 function updateById(id, update) {
-  return User.findByIdAndUpdate(id, update, { new: true, runValidators: true })
+  return User.findByIdAndUpdate(id, update, { returnDocument: 'after', runValidators: true })
 }
 
 /**

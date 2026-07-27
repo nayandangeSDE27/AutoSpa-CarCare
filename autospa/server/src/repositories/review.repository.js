@@ -32,7 +32,7 @@ async function reviewedBookingIds(customerId) {
 }
 
 function updateById(id, patch) {
-  return Review.findByIdAndUpdate(id, patch, { new: true, runValidators: true })
+  return Review.findByIdAndUpdate(id, patch, { returnDocument: 'after', runValidators: true })
 }
 
 function deleteById(id) {

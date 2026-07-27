@@ -70,16 +70,11 @@ const userSchema = new Schema(
   }
 )
 
-// Hash the password before saving whenever it changed.
-userSchema.pre('save', async function hashPassword(next) {
-  if (!this.isModified('password')) return next()
-  try {
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-    return next()
-  } catch (err) {
-    return next(err)
-  }
+userSchema.pre('save', async function hashPassword() {
+  if (!this.isModified('password')) return
+
+  const salt = await bcrypt.genSalt(10)
+  this.password = await bcrypt.hash(this.password, salt)
 })
 
 // Compare a plaintext candidate against the stored hash.

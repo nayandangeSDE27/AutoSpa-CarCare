@@ -84,7 +84,7 @@ function bookingsTrend() {
 
 // ---- Daily snapshot (cron) ----
 function upsertSnapshot(date, data) {
-  return AnalyticsSnapshot.findOneAndUpdate({ date }, { $set: { date, ...data } }, { new: true, upsert: true })
+  return AnalyticsSnapshot.findOneAndUpdate({ date }, { $set: { date, ...data } }, { returnDocument: 'after', upsert: true })
 }
 
 function listSnapshots(limit = 30) {

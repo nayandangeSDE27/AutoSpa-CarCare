@@ -33,7 +33,7 @@ async function nextSequence(key, session = null) {
   const doc = await Counter.findByIdAndUpdate(
     key,
     { $inc: { seq: 1 } },
-    { new: true, upsert: true, session }
+    { returnDocument: 'after', upsert: true, session }
   )
   return doc.seq
 }
@@ -48,7 +48,7 @@ function touchGarageDayLock(garageId, dateKey, session) {
   return Counter.findByIdAndUpdate(
     `slotlock:${garageId}:${dateKey}`,
     { $inc: { seq: 1 } },
-    { upsert: true, new: true, session }
+    { upsert: true, returnDocument: 'after', session }
   )
 }
 
@@ -161,7 +161,7 @@ function countTodayJobsForWorker(workerId, dayStart, dayEnd) {
 
 function updateById(id, update, session = null) {
   return Booking.findByIdAndUpdate(id, update, {
-    new: true,
+    returnDocument: 'after',
     runValidators: true,
     session,
   })

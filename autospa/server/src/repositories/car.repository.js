@@ -17,7 +17,7 @@ function findByOwner(ownerId) {
 }
 
 function updateById(id, update) {
-  return Car.findByIdAndUpdate(id, update, { new: true, runValidators: true })
+  return Car.findByIdAndUpdate(id, update, { returnDocument: 'after', runValidators: true })
 }
 
 function deleteById(id) {

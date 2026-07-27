@@ -21,7 +21,7 @@ function findByBooking(bookingId) {
 }
 
 function updateById(id, update, session = null) {
-  return Payment.findByIdAndUpdate(id, update, { new: true, session })
+  return Payment.findByIdAndUpdate(id, update, { returnDocument: 'after', session })
 }
 
 async function findPaginated(filter = {}, { page = 1, limit = 20 } = {}) {

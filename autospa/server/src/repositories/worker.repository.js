@@ -21,7 +21,7 @@ function countAvailable(garageId) {
 }
 
 function updateById(id, update) {
-  return Worker.findByIdAndUpdate(id, update, { new: true, runValidators: true })
+  return Worker.findByIdAndUpdate(id, update, { returnDocument: 'after', runValidators: true })
 }
 
 function deleteById(id) {
