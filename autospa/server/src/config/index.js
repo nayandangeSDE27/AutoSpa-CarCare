@@ -89,15 +89,13 @@ const config = {
     },
   },
 
-  smtp: {
-    host: process.env.SMTP_HOST || '',
-    port: Number(process.env.SMTP_PORT) || 587,
-    user: process.env.SMTP_USER || '',
-    pass: process.env.SMTP_PASS || '',
-    from: process.env.SMTP_FROM || 'AutoSpa <no-reply@autospa.local>',
-    // Real email only when host+user+pass are present; otherwise mock (log).
+  brevo: {
+    apiKey: process.env.BREVO_API_KEY || '',
+    fromEmail: process.env.BREVO_FROM_EMAIL || '',
+    fromName: process.env.BREVO_FROM_NAME || 'AutoSpa',
+    // Real email only when apiKey and fromEmail are present; otherwise mock (log).
     get enabled() {
-      return Boolean(this.host && this.user && this.pass)
+      return Boolean(this.apiKey && this.fromEmail)
     },
   },
 
